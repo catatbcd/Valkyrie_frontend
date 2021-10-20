@@ -48,11 +48,9 @@ function Login() {
     <Col xs={8} md={6}>
    <div id="alternativeLogin">
     <label>O inicie sesión con:</label>
-    <div id="iconGroup">
-      
+          
     <GoogleButton  id="googleIcon" onClick={signInWithGoogle} />
     
-    </div>
   </div></Col></Row>
   <Row>
   <Col className="register-info"><span>¿Aún no tienes una cuenta?</span><a href="/register"><strong>Crea tu cuenta</strong></a></Col>

@@ -128,13 +128,27 @@ export default function ProductsTable() {
     {
       dataField: "product",
       text: "Producto",
-      sort: true
-    },
+      sort: true,
+      formatter: (cellContent, row) => {
+        return(
+          <div>
+          <div className="title-th" data-title="Producto: "></div>{row.product}
+          </div>
+        );
+    }
+  },
     {
         dataField: "description",
         text: "Descripción",
-        sort: true
-      },
+        sort: true,
+        formatter: (cellContent, row) => {
+          return(
+            <div>
+            <div  className="title-th" data-title="Descripción: "></div>{row.description}
+            </div>
+          );
+      }
+    },
     {
       dataField: "price",
       text: "Valor Unitario",
@@ -144,12 +158,11 @@ export default function ProductsTable() {
       formatter: (cellContent, row) => {
         
         return(
-          <div>$ {Intl.NumberFormat().format(row.price)}</div>
+          <div>
+          <div className="title-th" data-title="Valor Unitario: "></div>$ {Intl.NumberFormat().format(row.price)}
+          </div>
         );
-      
-      
-       
-        }
+   }
 
 
     },
@@ -163,17 +176,22 @@ export default function ProductsTable() {
       formatter: (cellContent, row) => {
         if(row.stateProduct===true)
         return(
-          <div className="status-p bg-success text-white">Disponible</div>
+          <div>
+          <div className="title-th" data-title="Estado: "></div><span className="status-p bg-success text-white">Disponible</span>
+        </div>
         );
       
       else if(row.stateProduct === false)
         return(
-          <span className="status-p bg-danger text-white">No Disponible</span>
+          <div>
+          <div className="title-th"data-title="Estado: " ></div><span className="status-p bg-danger text-white">No Disponible</span>
+        </div>
         )
       else
       return(
-        <span className="status-p bg-warning text-white">{row.stateProduct}</span>
-      )
+        <div>
+        <div className="title-th" data-title="Estado: " ></div><span className="status-p bg-warning text-white">{row.stateProduct}</span>
+      </div>)
        
         }
     },
@@ -196,7 +214,7 @@ export default function ProductsTable() {
 
         if (row.state)
           return (
-            <div>
+            <div className="action">
               <button
                 className="btn btn-primary btn-xs"
                 onClick={() => {
@@ -259,7 +277,7 @@ export default function ProductsTable() {
           );
         else
           return (
-            <div>
+            <div className="action">
               <button
                 className="btn btn-danger btn-xs"
                 onClick={() => handleDelete(row._id, rowIndex)}
